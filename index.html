@@ -209,6 +209,75 @@
   }
   @media(max-width:900px){.craft-grid{grid-template-columns:1fr}.pizza-frame{max-width:420px;margin:0 auto}}
 
+  /* ---------- SIGNATURE DISHES (NEW) ---------- */
+  .dishes{background:linear-gradient(180deg,#fff,var(--purple-50))}
+  .dish-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.6rem}
+  .dish{grid-column:span 2}
+  .dish:nth-child(1),.dish:nth-child(2){grid-column:span 3}
+  .dish-card{
+    position:relative;border-radius:var(--radius);overflow:hidden;background:#fff;
+    border:1px solid rgba(124,58,237,.12);box-shadow:0 8px 26px rgba(76,42,133,.08);
+    transition:transform .35s ease,box-shadow .35s ease;height:100%;
+  }
+  .dish-card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+  .dish-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:3;
+    background:linear-gradient(90deg,var(--purple-500),var(--gold));
+  }
+  .dish-img{
+    position:relative;height:280px;overflow:hidden;
+    background:linear-gradient(135deg,var(--purple-100),var(--purple-50));
+  }
+  .dish:nth-child(1) .dish-img,.dish:nth-child(2) .dish-img{height:340px}
+  .dish-img img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s ease;
+  }
+  .dish-card:hover .dish-img img{transform:scale(1.12);filter:saturate(1.12)}
+  .dish-img::after{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,transparent 45%,rgba(45,17,85,.65));
+    opacity:.55;transition:opacity .4s ease;
+  }
+  .dish-card:hover .dish-img::after{opacity:.9}
+  /* emoji fallback if image file is missing */
+  .dish-img.no-img{display:grid;place-items:center}
+  .dish-img.no-img::before{content:attr(data-emoji);font-size:4.5rem;opacity:.85}
+  .dish-img.no-img img{display:none}
+  .dish-tag{
+    position:absolute;top:16px;left:16px;z-index:2;
+    background:rgba(255,255,255,.92);color:var(--purple-800);
+    font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+    padding:.4rem .9rem;border-radius:999px;box-shadow:0 6px 16px rgba(45,17,85,.2);
+  }
+  .dish-body{padding:1.5rem 1.7rem 1.8rem;position:relative}
+  .dish-body h3{font-size:1.3rem;color:var(--purple-900);margin-bottom:.35rem}
+  .dish-body h3 em{font-style:italic;color:var(--gold);font-weight:500}
+  .dish-body p{font-size:.9rem;color:var(--grey);font-weight:300;margin-bottom:.9rem}
+  .dish-meta{display:flex;gap:.5rem;flex-wrap:wrap}
+  .dish-meta span{
+    font-size:.72rem;font-weight:600;color:var(--purple-600);
+    background:var(--purple-50);border:1px solid rgba(124,58,237,.18);
+    padding:.28rem .75rem;border-radius:999px;transition:background .25s ease,color .25s ease;
+  }
+  .dish-card:hover .dish-meta span{background:var(--purple-700);color:#fff}
+  /* staggered reveal */
+  .dish:nth-child(2){transition-delay:.1s}
+  .dish:nth-child(3){transition-delay:.05s}
+  .dish:nth-child(4){transition-delay:.15s}
+  .dish:nth-child(5){transition-delay:.25s}
+  @media(max-width:900px){
+    .dish-grid{grid-template-columns:1fr 1fr}
+    .dish,.dish:nth-child(1),.dish:nth-child(2){grid-column:span 1}
+    .dish:nth-child(1) .dish-img,.dish:nth-child(2) .dish-img{height:280px}
+    .dish:nth-child(5){grid-column:span 2}
+  }
+  @media(max-width:560px){
+    .dish-grid{grid-template-columns:1fr}
+    .dish:nth-child(5){grid-column:span 1}
+    .dish-img,.dish:nth-child(1) .dish-img,.dish:nth-child(2) .dish-img{height:240px}
+  }
+
   /* ---------- EXPERIENCE ---------- */
   .timeline{position:relative;max-width:920px;margin:0 auto}
   .timeline::before{
@@ -328,6 +397,7 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#craft">Signature Craft</a>
+      <a href="#dishes">Dishes</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#achievements">Achievements</a>
@@ -402,6 +472,90 @@
         <li>100+ Pizzas Daily at Peak<span>Speed without ever compromising on quality</span></li>
         <li>Seasonal &amp; Signature Creations<span>Menus that grew customer orders by 20% in one year</span></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIGNATURE DISHES (NEW) ================= -->
+<section class="dishes" id="dishes">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">The Menu</div>
+      <h2>Signature Dishes</h2>
+      <p>A taste of what comes out of my section — authentic Italian classics made fresh, plated with care.</p>
+    </div>
+    <div class="dish-grid">
+
+      <div class="dish reveal">
+        <div class="dish-card">
+          <div class="dish-img" data-emoji="🍕">
+            <span class="dish-tag">Signature</span>
+            <img src="images/pizza.jpg" alt="Wood-fired pizza" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <h3>Wood-Fired <em>Pizza</em></h3>
+            <p>48-hour fermented dough, hand-stretched and baked in a stone oven for that perfect leopard-spotted char.</p>
+            <div class="dish-meta"><span>Wood-Fired</span><span>48h Dough</span><span>Stone Oven</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish reveal">
+        <div class="dish-card">
+          <div class="dish-img" data-emoji="🍝">
+            <span class="dish-tag">Fresh Daily</span>
+            <img src="images/pasta.jpg" alt="Fresh Italian pasta" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <h3>Fresh Italian <em>Pasta</em></h3>
+            <p>Silky house-made pasta tossed in rich, slow-cooked sauces finished to order.</p>
+            <div class="dish-meta"><span>Hand-Made</span><span>Al Dente</span><span>Rich Sauces</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish reveal">
+        <div class="dish-card">
+          <div class="dish-img" data-emoji="🧀">
+            <span class="dish-tag">Classic</span>
+            <img src="images/lasagna.jpg" alt="Layered lasagna" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <h3>Classic <em>Lasagna</em></h3>
+            <p>Layers of pasta, slow-simmered ragù, béchamel and melted mozzarella, baked golden.</p>
+            <div class="dish-meta"><span>Béchamel</span><span>Slow Ragù</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish reveal">
+        <div class="dish-card">
+          <div class="dish-img" data-emoji="🥟">
+            <span class="dish-tag">Stone Baked</span>
+            <img src="images/calzone.jpg" alt="Stuffed calzone" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <h3>Stuffed <em>Calzone</em></h3>
+            <p>Folded pizza dough filled with mozzarella, ricotta and premium fillings, baked until crisp.</p>
+            <div class="dish-meta"><span>Stuffed</span><span>Crisp Crust</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish reveal">
+        <div class="dish-card">
+          <div class="dish-img" data-emoji="🍰">
+            <span class="dish-tag">Dessert</span>
+            <img src="images/tiramisu.jpg" alt="Tiramisu dessert" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <h3>Italian <em>Tiramisu</em></h3>
+            <p>Espresso-soaked savoiardi layered with mascarpone cream and finished with cocoa.</p>
+            <div class="dish-meta"><span>Mascarpone</span><span>Espresso</span></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -566,6 +720,13 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Show emoji fallback if a dish image fails to load
+  document.querySelectorAll('.dish-img img').forEach(img=>{
+    const markMissing = ()=> img.parentElement.classList.add('no-img');
+    img.addEventListener('error', markMissing);
+    if(img.complete && img.naturalWidth === 0) markMissing();
+  });
 
   // Nav shadow on scroll
   window.addEventListener('scroll',()=>{
